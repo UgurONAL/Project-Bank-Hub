@@ -1,4 +1,4 @@
-150140019	Uður Önal
-150140125	Samet Yörükoðlu
-150140145	Bünyamin Ýbrahim Kurt
-150150904	Ahmed Nader Mahmoud Fathy Elsayed Mahmoud
+150140019     Uður Önal
+150140125     Samet Yörükoðlu
+150140145     Bünyamin Ýbrahim Kurt
+150150904     Ahmed Nader Mahmoud Fathy Elsayed Mahmoud

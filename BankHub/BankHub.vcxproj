@@ -94,8 +94,7 @@
       </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <AdditionalDependencies>C:\Users\Bunyamin\source\repos\BankHub\BankHub\mysql\lib\libmysql.lib;C:\Users\Bunyamin\source\repos\BankHub\BankHub\mysql\lib\vs14\mysqlclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>Main</EntryPointSymbol>
       <AdditionalLibraryDirectories>
@@ -120,8 +119,7 @@
       </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <AdditionalDependencies>C:\Users\Bunyamin\source\repos\BankHub\BankHub\mysql\lib\libmysql.lib;C:\Users\Bunyamin\source\repos\BankHub\BankHub\mysql\lib\vs14\mysqlclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
     </Link>

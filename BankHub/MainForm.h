@@ -1,4 +1,5 @@
 #pragma once
+#include "UserLogin.h";
 
 namespace BankHub {
 
@@ -105,6 +106,9 @@ namespace BankHub {
 		Close();
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		UserLogin ^ usrLogForm = gcnew UserLogin();
+		usrLogForm->Show();
+		this->Hide();
 	}
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 	}

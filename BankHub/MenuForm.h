@@ -1,4 +1,4 @@
-#pragma once
+
 #include "AccountForm.h"
 #include "UserInformationForm.h"
 #include "MoneyTransferForm.h"

@@ -1,11 +1,15 @@
-#pragma once
+
 #include "MenuForm.h";
+#include "mysql\include\mysql.h"
+#include "msclr\marshal_cppstd.h"
 
 #include <string>
 #include <string.h>
 
+
 namespace BankHub {
 
+	using namespace std;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -136,15 +140,45 @@ namespace BankHub {
 		String^ tc = TextBox1->Text;
 		String^ pass = textBox2->Text;
 
+		msclr::interop::marshal_context context;
+		std::string tcStr = context.marshal_as<std::string>(tc);
+		msclr::interop::marshal_context context2;
+		std::string passStr = context2.marshal_as<std::string>(pass);
+
 		MenuForm ^ menuForm = gcnew MenuForm();
 
-		if(tc == "33139684704" && pass == "linksys"){
+		MYSQL *mysql;
+		MYSQL_RES *result;
+		MYSQL_ROW row;
+		MYSQL *conn;
+		int sorgu;
+
+		std::string sql = "SELECT passwords FROM users WHERE citizenship_no = ";
+		sql += tcStr;
+
+		mysql = mysql_init(NULL);
+		conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+		sorgu = mysql_query(conn, sql.c_str());
+		result = mysql_store_result(conn);
+		row = mysql_fetch_row(result);
+
+		char *passSql = row[0];
+		std::string abc = passSql;
+
+		if (abc == passStr) {
+			menuForm->Show();
+			this->Hide();
+		}else {
+			MessageBox::Show("Hatalý Giriþ. Tekrar Deneyiniz.");
+		}
+
+		/*if(tc == "33139684704" && pass == "linksys"){
 			menuForm->Show();
 			this->Hide();
 		}
 		else {
 			MessageBox::Show("Hatalý Giriþ. Tekrar Deneyiniz.");
-		}
+		}*/
 
 	}
 };

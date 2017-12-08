@@ -2,6 +2,8 @@
   BankHub.MainForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.MenuForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.MoneyTransferForm.resources - Embedded, ContainedInManifestFile, 
+  BankHub.OpenAccountForm.resources - Embedded, ContainedInManifestFile, 
+  BankHub.TransferHistoryForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.UserInformationForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.UserLogin.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
@@ -26,6 +28,12 @@ Class BankHub.UserInformationForm: AutoLayout, AnsiClass, Class, Public, BeforeF
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class BankHub.MoneyTransferForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BankHub.OpenAccountForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BankHub.TransferHistoryForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class BankHub.MenuForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit

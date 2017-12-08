@@ -2,7 +2,6 @@
 #include "MenuForm.h";
 #include "mysql\include\mysql.h"
 #include "msclr\marshal_cppstd.h"
-#include "User.h"
 
 #include <string>
 #include <string.h>
@@ -163,30 +162,29 @@ namespace BankHub {
 		result = mysql_store_result(conn);
 		row = mysql_fetch_row(result);
 
-		char *passSql = row[0];
-		std::string abc = passSql;
-
-		char *id = row[1];
-		std::string _id = id;
-		std::string sql2 = "INSERT INTO login (id) VALUES (";
-		sql2 += _id;
-		sql2 += ")";
-		sorgu = mysql_query(conn, sql2.c_str());
-
-		if (abc == passStr) {
-			menuForm->Show();
-			this->Hide();
-		}else {
-			MessageBox::Show("Hatalý Giriþ. Tekrar Deneyiniz.");
-		}
-
-		/*if(tc == "33139684704" && pass == "linksys"){
-			menuForm->Show();
-			this->Hide();
+		if (row == NULL) {
+			MessageBox::Show("Girilen TC ile kayýtlý bir kullanýcý bulunmamaktadýr.", "LogIn", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		else {
-			MessageBox::Show("Hatalý Giriþ. Tekrar Deneyiniz.");
-		}*/
+			char *passSql = row[0];
+			std::string abc = passSql;
+
+			char *id = row[1];
+			std::string _id = id;
+			//std::string sql2 = "INSERT INTO login (id) VALUES (";
+			std::string sql2 = "UPDATE login SET id = ";
+			sql2 += _id;
+			//sql2 += ")";
+			sorgu = mysql_query(conn, sql2.c_str());
+
+			if (abc == passStr) {
+				menuForm->Show();
+				this->Hide();
+			}
+			else {
+				MessageBox::Show("Hatalý Giriþ. Tekrar Deneyiniz.", "LogIn", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
 
 	}
 };

@@ -113,16 +113,6 @@ namespace BankHub {
 				}
 				i++;
 			}
-
-			// Data grid verileri burada doldur...
-			/*for (size_t i = 0; i < 4; i++)
-			{
-				this->dataGridView1->Rows->Add();
-				for (size_t j = 0; j < 3; j++)
-				{
-					this->dataGridView1->Rows[i]->Cells[j]->Value = "Ali";
-				}
-			}*/
 			
 			// 
 			// hesap_no

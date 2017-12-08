@@ -2,6 +2,8 @@
 #include "AccountForm.h"
 #include "UserInformationForm.h"
 #include "MoneyTransferForm.h"
+#include "OpenAccountForm.h"
+#include "TransferHistoryForm.h"
 
 namespace BankHub {
 
@@ -44,6 +46,7 @@ namespace BankHub {
 	private: System::Windows::Forms::Button^  button4;
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::Button^  button6;
+	private: System::Windows::Forms::Button^  button7;
 	protected:
 
 	private:
@@ -66,6 +69,7 @@ namespace BankHub {
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -125,10 +129,11 @@ namespace BankHub {
 			this->button5->TabIndex = 5;
 			this->button5->Text = L"Hesap Aç";
 			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &MenuForm::button5_Click);
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(98, 226);
+			this->button6->Location = System::Drawing::Point(98, 257);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(75, 23);
 			this->button6->TabIndex = 6;
@@ -136,11 +141,22 @@ namespace BankHub {
 			this->button6->UseVisualStyleBackColor = true;
 			this->button6->Click += gcnew System::EventHandler(this, &MenuForm::button6_Click);
 			// 
+			// button7
+			// 
+			this->button7->Location = System::Drawing::Point(82, 228);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(104, 23);
+			this->button7->TabIndex = 7;
+			this->button7->Text = L"Transfer Geçmiþi";
+			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &MenuForm::button7_Click);
+			// 
 			// MenuForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 292);
+			this->Controls->Add(this->button7);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
@@ -171,6 +187,14 @@ namespace BankHub {
 		Close();
 	}
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+		OpenAccountForm^ openAccountForm = gcnew OpenAccountForm();
+		openAccountForm->Show();
+	}
+	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
+		TransferHistoryForm^ tarnsfer = gcnew TransferHistoryForm();
+		tarnsfer->Show();
 	}
 };
 }

@@ -238,11 +238,11 @@ namespace BankHub {
 		row = mysql_fetch_row(result);
 
 		if (row == NULL) {
-			MessageBox::Show("Gönderilecek hesap numarasý bulunmamaktadýr.");
+			MessageBox::Show("Gönderilecek hesap numarasý bulunmamaktadýr.", "MoneyTransfer", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		else {
 			if (m > b) {
-				MessageBox::Show("Bu hesapta yeterli para bulunmamaktadýr.");
+				MessageBox::Show("Bu hesapta yeterli para bulunmamaktadýr.", "MoneyTransfer", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 			else {
 				std::string sql4 = "UPDATE accounts SET balance=balance-";
@@ -261,12 +261,34 @@ namespace BankHub {
 				sorgu = mysql_query(conn, sql4.c_str());
 				result = mysql_store_result(conn);
 
+
+				std::string sql5 = "SELECT id FROM login";
+
+				sorgu = mysql_query(conn, sql5.c_str());
+				result = mysql_store_result(conn);
+				row = mysql_fetch_row(result);
+
+				char *id = row[0];
+				std::string _id = id;
+
+				sql4 = "INSERT INTO transactions (id,user_id, from_account_no, destination_account_no, amount, created_at) VALUES (NULL,";
+				sql4 += _id;
+				sql4 += ",";
+				sql4 += _fromNo;
+				sql4 += ",";
+				sql4 += _toNo;
+				sql4 += ",";
+				sql4 += _miktar;
+				sql4 += ",";
+				sql4 += "NOW())";
+
+				sorgu = mysql_query(conn, sql4.c_str());
+				result = mysql_store_result(conn);
+
 				MessageBox::Show("Para Transferi Gerçekleþtirildi.");
 				this->Hide();
 			}
-		}
-
-		
+		}	
 
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {

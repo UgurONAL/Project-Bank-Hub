@@ -1,0 +1,9 @@
+﻿  MainForm.cpp
+c:\users\bunyamin\source\repos\bankhub\bankhub\MainForm.h(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\bunyamin\source\repos\bankhub\bankhub\UserLogin.h(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  MenuForm.cpp
+  MoneyTransferForm.cpp
+  UserLogin.cpp
+c:\users\bunyamin\source\repos\bankhub\bankhub\UserLogin.h(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+  BankHub.vcxproj -> C:\Users\Bunyamin\source\repos\BankHub\Debug\BankHub.exe

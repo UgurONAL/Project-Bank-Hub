@@ -2,6 +2,7 @@
 #include "MenuForm.h";
 #include "mysql\include\mysql.h"
 #include "msclr\marshal_cppstd.h"
+#include "User.h"
 
 #include <string>
 #include <string.h>
@@ -153,7 +154,7 @@ namespace BankHub {
 		MYSQL *conn;
 		int sorgu;
 
-		std::string sql = "SELECT passwords FROM users WHERE citizenship_no = ";
+		std::string sql = "SELECT passwords, id FROM users WHERE citizenship_no = ";
 		sql += tcStr;
 
 		mysql = mysql_init(NULL);
@@ -164,6 +165,13 @@ namespace BankHub {
 
 		char *passSql = row[0];
 		std::string abc = passSql;
+
+		char *id = row[1];
+		std::string _id = id;
+		std::string sql2 = "INSERT INTO login (id) VALUES (";
+		sql2 += _id;
+		sql2 += ")";
+		sorgu = mysql_query(conn, sql2.c_str());
 
 		if (abc == passStr) {
 			menuForm->Show();

@@ -1,4 +1,6 @@
-#pragma once
+
+#include "mysql\include\mysql.h"
+#include "msclr\marshal_cppstd.h"
 
 namespace BankHub {
 
@@ -74,16 +76,53 @@ namespace BankHub {
 			this->dataGridView1->Size = System::Drawing::Size(345, 150);
 			this->dataGridView1->TabIndex = 0;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AccountForm::dataGridView1_CellContentClick);
+
+			MYSQL *mysql;
+			MYSQL_RES *result;
+			MYSQL_ROW row;
+			MYSQL *conn;
+			int sorgu;
+
+			std::string sql = "SELECT id FROM login";
 			
+			mysql = mysql_init(NULL);
+			conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+			sorgu = mysql_query(conn, sql.c_str());
+			result = mysql_store_result(conn);
+			row = mysql_fetch_row(result);
+
+			char *id = row[0];
+			std::string _id = id;
+
+			std::string sql2 = "SELECT a.id, a.balance, b.name FROM accounts a JOIN banks b ON a.bank_id = b.id WHERE a.user_id =";
+			sql2 += _id;
+			sorgu = mysql_query(conn, sql2.c_str());
+			result = mysql_store_result(conn);
+			//row = mysql_fetch_row(result);
+
+			int i = 0;
+			while ((row = mysql_fetch_row(result)) != NULL) // Eðer veritabanýndan bilgi gelmiþse
+			{
+				this->dataGridView1->Rows->Add();
+				for (size_t j = 0; j < 3; j++)
+				{
+					char *a = row[j];
+					std::string _a = a;
+					String^ as = gcnew String(_a.c_str());
+					this->dataGridView1->Rows[i]->Cells[j]->Value = as;
+				}
+				i++;
+			}
+
 			// Data grid verileri burada doldur...
-			for (size_t i = 0; i < 4; i++)
+			/*for (size_t i = 0; i < 4; i++)
 			{
 				this->dataGridView1->Rows->Add();
 				for (size_t j = 0; j < 3; j++)
 				{
 					this->dataGridView1->Rows[i]->Cells[j]->Value = "Ali";
 				}
-			}
+			}*/
 			
 			// 
 			// hesap_no
@@ -94,13 +133,13 @@ namespace BankHub {
 			// 
 			// Bank_no
 			// 
-			this->Bank_no->HeaderText = L"Banka";
+			this->Bank_no->HeaderText = L"Bakiye";
 			this->Bank_no->Name = L"Bank_no";
 			this->Bank_no->ReadOnly = true;
 			// 
 			// amount
 			// 
-			this->amount->HeaderText = L"Bakiye";
+			this->amount->HeaderText = L"Banka";
 			this->amount->Name = L"amount";
 			this->amount->ReadOnly = true;
 			// 

@@ -146,6 +146,7 @@
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuForm.cpp" />
     <ClCompile Include="MoneyTransferForm.cpp" />
+    <ClCompile Include="User.cpp" />
     <ClCompile Include="UserInformationForm.cpp" />
     <ClCompile Include="UserLogin.cpp" />
   </ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="MoneyTransferForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="User.h" />
     <ClInclude Include="UserInformationForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

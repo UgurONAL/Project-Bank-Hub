@@ -33,7 +33,7 @@ Class ThisAssembly: AutoLayout, AnsiClass, Class, Abstract, Sealed, BeforeFieldI
     System.String DefaultAlias = mscorlib.dll : Assembly, Static, Literal, HasDefault
     System.String Copyright = © Microsoft Corporation.  All rights reserved. : Assembly, Static, Literal, HasDefault
     System.String Version = 4.0.0.0 : Assembly, Static, Literal, HasDefault
-    System.String InformationalVersion = 4.7.2115.0 : Assembly, Static, Literal, HasDefault
+    System.String InformationalVersion = 4.7.2600.0 : Assembly, Static, Literal, HasDefault
     System.String DailyBuildNumberStr = 30319 : Assembly, Static, Literal, HasDefault
     System.String BuildRevisionStr = 0 : Assembly, Static, Literal, HasDefault
     Int32 DailyBuildNumber = 30319 : Assembly, Static, Literal, HasDefault
@@ -451,7 +451,6 @@ Class Microsoft.Win32.Win32Native: AutoLayout, AnsiClass, Class, Abstract, Seale
     ReadFile(SafeFileHandle, Byte*, Int32, Int32&(Out), IntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     WriteFile(SafeFileHandle, Byte*, Int32, IntPtr, NativeOverlapped*): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     WriteFile(SafeFileHandle, Byte*, Int32, Int32&(Out), IntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
-    CancelIoEx(SafeFileHandle, NativeOverlapped*): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     GetDiskFreeSpaceEx(String, Int64&(Out), Int64&(Out), Int64&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     GetDriveType(String): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     GetVolumeInformation(String, StringBuilder(Out), Int32, Int32&(Out), Int32&(Out), Int32&(Out), StringBuilder(Out), Int32): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
@@ -488,6 +487,7 @@ Class Microsoft.Win32.Win32Native: AutoLayout, AnsiClass, Class, Abstract, Seale
     SetConsoleTextAttribute(IntPtr, Int16): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     GetConsoleOutputCP(): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     RegCreateKeyEx(SafeRegistryHandle, String, Int32, String, Int32, Int32, SECURITY_ATTRIBUTES, SafeRegistryHandle&(Out), Int32&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
+    RegDeleteKeyEx(SafeRegistryHandle, String, Int32, Int32): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     RegEnumKeyEx(SafeRegistryHandle, Int32, Char*, Int32&, Int32[], StringBuilder(Out), Int32[], Int64[]): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     RegEnumValue(SafeRegistryHandle, Int32, Char*, Int32&, IntPtr, Int32[], Byte[], Int32[]): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     RegOpenKeyEx(SafeRegistryHandle, String, Int32, Int32, SafeRegistryHandle&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
@@ -505,15 +505,12 @@ Class Microsoft.Win32.Win32Native: AutoLayout, AnsiClass, Class, Abstract, Seale
     GetUserObjectInformation(IntPtr, Int32, USEROBJECTFLAGS(HasFieldMarshal), Int32, Int32&): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     SystemFunction041(SafeBSTRHandle(In, Out), UInt32(In), UInt32(In)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     BCryptGetFipsAlgorithmMode(Boolean&(Out, HasFieldMarshal)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
-    AdjustTokenPrivileges(SafeAccessTokenHandle(In), Boolean(In), TOKEN_PRIVILEGE&(In), UInt32(In), TOKEN_PRIVILEGE&(In, Out), UInt32&(In, Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     CheckTokenMembership(SafeAccessTokenHandle(In), Byte[](In), Boolean&(In, Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     ConvertStringSidToSid(String, IntPtr&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     CreateWellKnownSid(Int32, Byte[], Byte[](Out), UInt32&): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     DuplicateHandle(IntPtr(In), IntPtr(In), IntPtr(In), SafeAccessTokenHandle&(In, Out), UInt32(In), Boolean(In), UInt32(In)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     DuplicateTokenEx(SafeAccessTokenHandle(In), UInt32(In), IntPtr(In), UInt32(In), UInt32(In), SafeAccessTokenHandle&(In, Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     GetCurrentProcess(): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
-    GetSecurityDescriptorLength(IntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
-    GetSecurityInfoByName(String, UInt32, UInt32, IntPtr&(Out), IntPtr&(Out), IntPtr&(Out), IntPtr&(Out), IntPtr&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     GetTokenInformation(IntPtr(In), UInt32(In), SafeLocalAllocHandle(In), UInt32(In), UInt32&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     GetTokenInformation(SafeAccessTokenHandle(In), UInt32(In), SafeLocalAllocHandle(In), UInt32(In), UInt32&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     LsaOpenPolicy(String, LSA_OBJECT_ATTRIBUTES&, Int32, SafeLsaPolicyHandle&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
@@ -521,7 +518,6 @@ Class Microsoft.Win32.Win32Native: AutoLayout, AnsiClass, Class, Abstract, Seale
     LsaFreeMemory(IntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     LsaClose(IntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     OpenProcessToken(IntPtr(In), TokenAccessLevels(In), SafeAccessTokenHandle&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
-    SetSecurityInfoByName(String, UInt32, UInt32, Byte[], Byte[], Byte[], Byte[]): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     CreateAssemblyNameObject(IAssemblyName&(Out), String, UInt32, IntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     CreateAssemblyEnum(IAssemblyEnum&(Out), IApplicationContext, IAssemblyName, UInt32, IntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     QueryUnbiasedInterruptTime(UInt64&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
@@ -544,6 +540,7 @@ Class Microsoft.Win32.Win32Native: AutoLayout, AnsiClass, Class, Abstract, Seale
     MapViewOfFile(SafeFileMappingHandle, UInt32, UInt32, UInt32, UIntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     FlushFileBuffers(SafeFileHandle): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     SetFilePointer(SafeFileHandle, Int64, SeekOrigin, Int32&(Out)): PrivateScope, Assembly, Static, HideBySig
+    CancelIoEx(SafeFileHandle, NativeOverlapped*): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     SetVolumeLabel(String, String): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     QueryPerformanceCounter(Int64&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     QueryPerformanceFrequency(Int64&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
@@ -585,7 +582,6 @@ Class Microsoft.Win32.Win32Native: AutoLayout, AnsiClass, Class, Abstract, Seale
     SetConsoleOutputCP(UInt32): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     RegConnectRegistry(String, SafeRegistryHandle, SafeRegistryHandle&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     RegDeleteKey(SafeRegistryHandle, String): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
-    RegDeleteKeyEx(SafeRegistryHandle, String, Int32, Int32): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     RegDeleteValue(SafeRegistryHandle, String): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     RegFlushKey(SafeRegistryHandle): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     RegOpenKeyEx(IntPtr, String, Int32, Int32, SafeRegistryHandle&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
@@ -597,6 +593,7 @@ Class Microsoft.Win32.Win32Native: AutoLayout, AnsiClass, Class, Abstract, Seale
     SendMessageTimeout(IntPtr, Int32, IntPtr, String, UInt32, UInt32, IntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     SystemFunction040(SafeBSTRHandle(In, Out), UInt32(In), UInt32(In)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     LsaNtStatusToWinError(Int32(In)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
+    AdjustTokenPrivileges(SafeAccessTokenHandle(In), Boolean(In), TOKEN_PRIVILEGE&(In), UInt32(In), TOKEN_PRIVILEGE&(In, Out), UInt32&(In, Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     AllocateLocallyUniqueId(LUID&(In, Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     ConvertSdToStringSd(Byte[], UInt32, UInt32, IntPtr&(Out), UInt32&): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     ConvertStringSdToSd(String, UInt32, IntPtr&(Out), UInt32&): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
@@ -605,7 +602,9 @@ Class Microsoft.Win32.Win32Native: AutoLayout, AnsiClass, Class, Abstract, Seale
     DuplicateTokenEx(SafeAccessTokenHandle(In), TokenAccessLevels(In), IntPtr(In), SECURITY_IMPERSONATION_LEVEL(In), TokenType(In), SafeAccessTokenHandle&(In, Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     IsEqualDomainSid(Byte[], Byte[], Boolean&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     GetCurrentThread(): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
+    GetSecurityDescriptorLength(IntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     GetSecurityInfoByHandle(SafeHandle, UInt32, UInt32, IntPtr&(Out), IntPtr&(Out), IntPtr&(Out), IntPtr&(Out), IntPtr&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
+    GetSecurityInfoByName(String, UInt32, UInt32, IntPtr&(Out), IntPtr&(Out), IntPtr&(Out), IntPtr&(Out), IntPtr&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     GetWindowsAccountDomainSid(Byte[], Byte[](Out), UInt32&): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     IsWellKnownSid(Byte[], Int32): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     LookupPrivilegeValue(String(In), String(In), LUID&(In, Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
@@ -618,7 +617,10 @@ Class Microsoft.Win32.Win32Native: AutoLayout, AnsiClass, Class, Abstract, Seale
     LsaRegisterLogonProcess(UNICODE_INTPTR_STRING&(In), SafeLsaLogonProcessHandle&(In, Out), IntPtr&(In, Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     LsaDeregisterLogonProcess(IntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     LsaFreeReturnBuffer(IntPtr): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
+    SetSecurityInfoByName(String, UInt32, UInt32, Byte[], Byte[], Byte[], Byte[]): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
     SetSecurityInfoByHandle(SafeHandle, UInt32, UInt32, Byte[], Byte[], Byte[], Byte[]): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
+    RtlGetVersion(RTL_OSVERSIONINFOEX&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
+    GetNativeSystemInfo(SYSTEM_INFO&(Out)): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl
 Class Microsoft.Win32.OAVariantLib: AutoLayout, AnsiClass, Class, Abstract, Sealed, BeforeFieldInit
   Fields:
     System.Type[] ClassTypes : Assembly, Static, InitOnly
@@ -1601,13 +1603,12 @@ Struct System.ExceptionResource: AutoLayout, AnsiClass, Class, Sealed
     System.ExceptionResource NotSupported_InComparableType = 43 : Public, Static, Literal, HasDefault
     System.ExceptionResource Argument_InvalidRegistryOptionsCheck = 44 : Public, Static, Literal, HasDefault
     System.ExceptionResource Argument_InvalidRegistryViewCheck = 45 : Public, Static, Literal, HasDefault
-Interface System.ITuple: AutoLayout, AnsiClass, Class, ClassSemanticsMask, Abstract
-  Properties:
-    Int32 Size 'get ' : 
+Interface System.ITupleInternal: AutoLayout, AnsiClass, Class, ClassSemanticsMask, Abstract
+  Interfaces:
+    System.Runtime.CompilerServices.ITuple
   Methods:
     ToString(StringBuilder): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     GetHashCode(IEqualityComparer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    get_Size(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
 Class System.Tuple: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
   Methods:
     Create(T1): PrivateScope, Public, Static, HideBySig
@@ -1632,7 +1633,8 @@ Class System.Tuple`1[T1]: AutoLayout, AnsiClass, Class, Public, Serializable, Be
     System.Collections.IStructuralEquatable
     System.Collections.IStructuralComparable
     System.IComparable
-    System.ITuple
+    System.ITupleInternal
+    System.Runtime.CompilerServices.ITuple
   Properties:
     T1 Item1   'get ' : 
   Methods:
@@ -1648,7 +1650,8 @@ Class System.Tuple`2[T1,T2]: AutoLayout, AnsiClass, Class, Public, Serializable,
     System.Collections.IStructuralEquatable
     System.Collections.IStructuralComparable
     System.IComparable
-    System.ITuple
+    System.ITupleInternal
+    System.Runtime.CompilerServices.ITuple
   Properties:
     T1 Item1   'get ' : 
     T2 Item2   'get ' : 
@@ -1667,7 +1670,8 @@ Class System.Tuple`3[T1,T2,T3]: AutoLayout, AnsiClass, Class, Public, Serializab
     System.Collections.IStructuralEquatable
     System.Collections.IStructuralComparable
     System.IComparable
-    System.ITuple
+    System.ITupleInternal
+    System.Runtime.CompilerServices.ITuple
   Properties:
     T1 Item1   'get ' : 
     T2 Item2   'get ' : 
@@ -1689,7 +1693,8 @@ Class System.Tuple`4[T1,T2,T3,T4]: AutoLayout, AnsiClass, Class, Public, Seriali
     System.Collections.IStructuralEquatable
     System.Collections.IStructuralComparable
     System.IComparable
-    System.ITuple
+    System.ITupleInternal
+    System.Runtime.CompilerServices.ITuple
   Properties:
     T1 Item1   'get ' : 
     T2 Item2   'get ' : 
@@ -1714,7 +1719,8 @@ Class System.Tuple`5[T1,T2,T3,T4,T5]: AutoLayout, AnsiClass, Class, Public, Seri
     System.Collections.IStructuralEquatable
     System.Collections.IStructuralComparable
     System.IComparable
-    System.ITuple
+    System.ITupleInternal
+    System.Runtime.CompilerServices.ITuple
   Properties:
     T1 Item1   'get ' : 
     T2 Item2   'get ' : 
@@ -1742,7 +1748,8 @@ Class System.Tuple`6[T1,T2,T3,T4,T5,T6]: AutoLayout, AnsiClass, Class, Public, S
     System.Collections.IStructuralEquatable
     System.Collections.IStructuralComparable
     System.IComparable
-    System.ITuple
+    System.ITupleInternal
+    System.Runtime.CompilerServices.ITuple
   Properties:
     T1 Item1   'get ' : 
     T2 Item2   'get ' : 
@@ -1773,7 +1780,8 @@ Class System.Tuple`7[T1,T2,T3,T4,T5,T6,T7]: AutoLayout, AnsiClass, Class, Public
     System.Collections.IStructuralEquatable
     System.Collections.IStructuralComparable
     System.IComparable
-    System.ITuple
+    System.ITupleInternal
+    System.Runtime.CompilerServices.ITuple
   Properties:
     T1 Item1   'get ' : 
     T2 Item2   'get ' : 
@@ -1807,7 +1815,8 @@ Class System.Tuple`8[T1,T2,T3,T4,T5,T6,T7,TRest]: AutoLayout, AnsiClass, Class, 
     System.Collections.IStructuralEquatable
     System.Collections.IStructuralComparable
     System.IComparable
-    System.ITuple
+    System.ITupleInternal
+    System.Runtime.CompilerServices.ITuple
   Properties:
     T1 Item1   'get ' : 
     T2 Item2   'get ' : 
@@ -1829,14 +1838,13 @@ Class System.Tuple`8[T1,T2,T3,T4,T5,T6,T7,TRest]: AutoLayout, AnsiClass, Class, 
     Equals(Object): PrivateScope, Public, Virtual, HideBySig
     GetHashCode(): PrivateScope, Public, Virtual, HideBySig
     ToString(): PrivateScope, Public, Virtual, HideBySig
-Interface System.ITupleInternal: AutoLayout, AnsiClass, Class, ClassSemanticsMask, Abstract
-  Properties:
-    Int32 Size 'get ' : 
+Interface System.IValueTupleInternal: AutoLayout, AnsiClass, Class, ClassSemanticsMask, Abstract
+  Interfaces:
+    System.Runtime.CompilerServices.ITuple
   Methods:
     GetHashCode(IEqualityComparer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    get_Size(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     ToStringEnd(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-Struct System.ValueTuple: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+Struct System.ValueTuple: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, Serializable, BeforeFieldInit
   :System.ValueType
   Interfaces:
     System.IEquatable`1[System.ValueTuple]
@@ -1844,7 +1852,8 @@ Struct System.ValueTuple: AutoLayout, AnsiClass, Class, Public, SequentialLayout
     System.Collections.IStructuralComparable
     System.IComparable
     System.IComparable`1[System.ValueTuple]
-    System.ITupleInternal
+    System.IValueTupleInternal
+    System.Runtime.CompilerServices.ITuple
   Methods:
     Equals(Object): PrivateScope, Public, Virtual, HideBySig
     Equals(ValueTuple): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
@@ -1867,7 +1876,7 @@ Struct System.ValueTuple: AutoLayout, AnsiClass, Class, Public, SequentialLayout
     CombineHashCodes(Int32, Int32, Int32, Int32, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
     CombineHashCodes(Int32, Int32, Int32, Int32, Int32, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
     CombineHashCodes(Int32, Int32, Int32, Int32, Int32, Int32, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
-Struct System.ValueTuple`1[T1]: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+Struct System.ValueTuple`1[T1]: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, Serializable, BeforeFieldInit
   Type parameter: T1
   :System.ValueType
     Void .ctor(T1): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -1877,7 +1886,8 @@ Struct System.ValueTuple`1[T1]: AutoLayout, AnsiClass, Class, Public, Sequential
     System.Collections.IStructuralComparable
     System.IComparable
     System.IComparable`1[System.ValueTuple`1[T1]]
-    System.ITupleInternal
+    System.IValueTupleInternal
+    System.Runtime.CompilerServices.ITuple
   Fields:
     T1 Item1 : Public
   Methods:
@@ -1886,7 +1896,7 @@ Struct System.ValueTuple`1[T1]: AutoLayout, AnsiClass, Class, Public, Sequential
     CompareTo(ValueTuple`1): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetHashCode(): PrivateScope, Public, Virtual, HideBySig
     ToString(): PrivateScope, Public, Virtual, HideBySig
-Struct System.ValueTuple`2[T1,T2]: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+Struct System.ValueTuple`2[T1,T2]: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable, BeforeFieldInit
   Type parameter: T1
   Type parameter: T2
   :System.ValueType
@@ -1897,7 +1907,8 @@ Struct System.ValueTuple`2[T1,T2]: AutoLayout, AnsiClass, Class, Public, Sealed,
     System.Collections.IStructuralComparable
     System.IComparable
     System.IComparable`1[System.ValueTuple`2[T1,T2]]
-    System.ITupleInternal
+    System.IValueTupleInternal
+    System.Runtime.CompilerServices.ITuple
   Fields:
     T1 Item1 : Public
     T2 Item2 : Public
@@ -1907,7 +1918,7 @@ Struct System.ValueTuple`2[T1,T2]: AutoLayout, AnsiClass, Class, Public, Sealed,
     CompareTo(ValueTuple`2): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetHashCode(): PrivateScope, Public, Virtual, HideBySig
     ToString(): PrivateScope, Public, Virtual, HideBySig
-Struct System.ValueTuple`3[T1,T2,T3]: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+Struct System.ValueTuple`3[T1,T2,T3]: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable, BeforeFieldInit
   Type parameter: T1
   Type parameter: T2
   Type parameter: T3
@@ -1919,7 +1930,8 @@ Struct System.ValueTuple`3[T1,T2,T3]: AutoLayout, AnsiClass, Class, Public, Seal
     System.Collections.IStructuralComparable
     System.IComparable
     System.IComparable`1[System.ValueTuple`3[T1,T2,T3]]
-    System.ITupleInternal
+    System.IValueTupleInternal
+    System.Runtime.CompilerServices.ITuple
   Fields:
     T1 Item1 : Public
     T2 Item2 : Public
@@ -1930,7 +1942,7 @@ Struct System.ValueTuple`3[T1,T2,T3]: AutoLayout, AnsiClass, Class, Public, Seal
     CompareTo(ValueTuple`3): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetHashCode(): PrivateScope, Public, Virtual, HideBySig
     ToString(): PrivateScope, Public, Virtual, HideBySig
-Struct System.ValueTuple`4[T1,T2,T3,T4]: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+Struct System.ValueTuple`4[T1,T2,T3,T4]: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable, BeforeFieldInit
   Type parameter: T1
   Type parameter: T2
   Type parameter: T3
@@ -1943,7 +1955,8 @@ Struct System.ValueTuple`4[T1,T2,T3,T4]: AutoLayout, AnsiClass, Class, Public, S
     System.Collections.IStructuralComparable
     System.IComparable
     System.IComparable`1[System.ValueTuple`4[T1,T2,T3,T4]]
-    System.ITupleInternal
+    System.IValueTupleInternal
+    System.Runtime.CompilerServices.ITuple
   Fields:
     T1 Item1 : Public
     T2 Item2 : Public
@@ -1955,7 +1968,7 @@ Struct System.ValueTuple`4[T1,T2,T3,T4]: AutoLayout, AnsiClass, Class, Public, S
     CompareTo(ValueTuple`4): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetHashCode(): PrivateScope, Public, Virtual, HideBySig
     ToString(): PrivateScope, Public, Virtual, HideBySig
-Struct System.ValueTuple`5[T1,T2,T3,T4,T5]: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+Struct System.ValueTuple`5[T1,T2,T3,T4,T5]: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable, BeforeFieldInit
   Type parameter: T1
   Type parameter: T2
   Type parameter: T3
@@ -1969,7 +1982,8 @@ Struct System.ValueTuple`5[T1,T2,T3,T4,T5]: AutoLayout, AnsiClass, Class, Public
     System.Collections.IStructuralComparable
     System.IComparable
     System.IComparable`1[System.ValueTuple`5[T1,T2,T3,T4,T5]]
-    System.ITupleInternal
+    System.IValueTupleInternal
+    System.Runtime.CompilerServices.ITuple
   Fields:
     T1 Item1 : Public
     T2 Item2 : Public
@@ -1982,7 +1996,7 @@ Struct System.ValueTuple`5[T1,T2,T3,T4,T5]: AutoLayout, AnsiClass, Class, Public
     CompareTo(ValueTuple`5): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetHashCode(): PrivateScope, Public, Virtual, HideBySig
     ToString(): PrivateScope, Public, Virtual, HideBySig
-Struct System.ValueTuple`6[T1,T2,T3,T4,T5,T6]: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+Struct System.ValueTuple`6[T1,T2,T3,T4,T5,T6]: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable, BeforeFieldInit
   Type parameter: T1
   Type parameter: T2
   Type parameter: T3
@@ -1997,7 +2011,8 @@ Struct System.ValueTuple`6[T1,T2,T3,T4,T5,T6]: AutoLayout, AnsiClass, Class, Pub
     System.Collections.IStructuralComparable
     System.IComparable
     System.IComparable`1[System.ValueTuple`6[T1,T2,T3,T4,T5,T6]]
-    System.ITupleInternal
+    System.IValueTupleInternal
+    System.Runtime.CompilerServices.ITuple
   Fields:
     T1 Item1 : Public
     T2 Item2 : Public
@@ -2011,7 +2026,7 @@ Struct System.ValueTuple`6[T1,T2,T3,T4,T5,T6]: AutoLayout, AnsiClass, Class, Pub
     CompareTo(ValueTuple`6): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetHashCode(): PrivateScope, Public, Virtual, HideBySig
     ToString(): PrivateScope, Public, Virtual, HideBySig
-Struct System.ValueTuple`7[T1,T2,T3,T4,T5,T6,T7]: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+Struct System.ValueTuple`7[T1,T2,T3,T4,T5,T6,T7]: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable, BeforeFieldInit
   Type parameter: T1
   Type parameter: T2
   Type parameter: T3
@@ -2027,7 +2042,8 @@ Struct System.ValueTuple`7[T1,T2,T3,T4,T5,T6,T7]: AutoLayout, AnsiClass, Class, 
     System.Collections.IStructuralComparable
     System.IComparable
     System.IComparable`1[System.ValueTuple`7[T1,T2,T3,T4,T5,T6,T7]]
-    System.ITupleInternal
+    System.IValueTupleInternal
+    System.Runtime.CompilerServices.ITuple
   Fields:
     T1 Item1 : Public
     T2 Item2 : Public
@@ -2042,7 +2058,7 @@ Struct System.ValueTuple`7[T1,T2,T3,T4,T5,T6,T7]: AutoLayout, AnsiClass, Class, 
     CompareTo(ValueTuple`7): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetHashCode(): PrivateScope, Public, Virtual, HideBySig
     ToString(): PrivateScope, Public, Virtual, HideBySig
-Struct System.ValueTuple`8[T1,T2,T3,T4,T5,T6,T7,TRest]: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+Struct System.ValueTuple`8[T1,T2,T3,T4,T5,T6,T7,TRest]: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable, BeforeFieldInit
   Type parameter: T1
   Type parameter: T2
   Type parameter: T3
@@ -2059,7 +2075,8 @@ Struct System.ValueTuple`8[T1,T2,T3,T4,T5,T6,T7,TRest]: AutoLayout, AnsiClass, C
     System.Collections.IStructuralComparable
     System.IComparable
     System.IComparable`1[System.ValueTuple`8[T1,T2,T3,T4,T5,T6,T7,TRest]]
-    System.ITupleInternal
+    System.IValueTupleInternal
+    System.Runtime.CompilerServices.ITuple
   Fields:
     T1 Item1 : Public
     T2 Item2 : Public
@@ -2164,6 +2181,7 @@ Class System.String: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable,
     Char Chars [Int32] 'get ' : 
     Int32 Length 'get ' : 
   Methods:
+    get_Length(): PrivateScope, Public, HideBySig, SpecialName
     get_Chars(Int32): PrivateScope, Public, HideBySig, SpecialName
     Contains(String): PrivateScope, Public, HideBySig
     StartsWith(String): PrivateScope, Public, HideBySig
@@ -2194,7 +2212,6 @@ Class System.String: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable,
     UseRandomizedHashing(): PrivateScope, Assembly, Static, HideBySig
     GetHashCode(): PrivateScope, Public, Virtual, HideBySig
     GetLegacyNonRandomizedHashCode(): PrivateScope, Assembly, HideBySig
-    get_Length(): PrivateScope, Public, HideBySig, SpecialName
     Split(Char[]): PrivateScope, Public, HideBySig
     Split(Char[], Int32): PrivateScope, Public, HideBySig
     Split(Char[], StringSplitOptions): PrivateScope, Public, HideBySig
@@ -2343,6 +2360,7 @@ Class System.CultureAwareComparer: AutoLayout, AnsiClass, Class, Sealed, Seriali
   :System.StringComparer
     Void .ctor(System.Globalization.CultureInfo, Boolean): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName
     Void .ctor(System.Globalization.CompareInfo, Boolean): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.Globalization.CompareInfo, System.Globalization.CompareOptions): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName
   Interfaces:
     System.IWellKnownStringEqualityComparer
   Methods:
@@ -5953,11 +5971,11 @@ Class System.Number: AutoLayout, AnsiClass, Class, BeforeFieldInit
     TryParseInt64(String, NumberStyles, NumberFormatInfo, Int64&(Out)): PrivateScope, Assembly, Static, HideBySig
     TryParseUInt32(String, NumberStyles, NumberFormatInfo, UInt32&(Out)): PrivateScope, Assembly, Static, HideBySig
     TryParseUInt64(String, NumberStyles, NumberFormatInfo, UInt64&(Out)): PrivateScope, Assembly, Static, HideBySig
-    TryStringToNumber(String, NumberStyles, NumberBuffer&, StringBuilder, NumberFormatInfo, Boolean): PrivateScope, Assembly, Static, HideBySig
     FormatNumberBuffer(Byte*, String, NumberFormatInfo, Char*): PrivateScope, Assembly, Static, HideBySig
     TryParseDouble(String, NumberStyles, NumberFormatInfo, Double&(Out)): PrivateScope, Assembly, Static, HideBySig
     TryParseSingle(String, NumberStyles, NumberFormatInfo, Single&(Out)): PrivateScope, Assembly, Static, HideBySig
     TryStringToNumber(String, NumberStyles, NumberBuffer&, NumberFormatInfo, Boolean): PrivateScope, Assembly, Static, HideBySig
+    TryStringToNumber(String, NumberStyles, NumberBuffer&, StringBuilder, NumberFormatInfo, Boolean): PrivateScope, Assembly, Static, HideBySig
 Class System.ObjectDisposedException: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
   :System.InvalidOperationException
     Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -6413,6 +6431,7 @@ Struct System.RuntimeTypeHandle: AutoLayout, AnsiClass, Class, Public, Sequentia
     GetTypeByName(String, Boolean, Boolean, Boolean, StackCrawlMark&, IntPtr, Boolean): PrivateScope, Assembly, Static, HideBySig
     GetInstantiation(RuntimeTypeHandle, ObjectHandleOnStack, Boolean): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl, HasSecurity
     Instantiate(Type[]): PrivateScope, Assembly, HideBySig
+    IsCollectible(RuntimeTypeHandle): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl, HasSecurity
     HasInstantiation(RuntimeType): PrivateScope, Assembly, Static, HideBySig
     IsGenericTypeDefinition(RuntimeType): PrivateScope, Assembly, Static, HideBySig
     IsGenericVariable(RuntimeType): PrivateScope, Assembly, Static, HideBySig
@@ -6462,7 +6481,6 @@ Struct System.RuntimeTypeHandle: AutoLayout, AnsiClass, Class, Public, Sequentia
     MakeSZArray(): PrivateScope, Assembly, HideBySig
     MakeByRef(): PrivateScope, Assembly, HideBySig
     MakePointer(): PrivateScope, Assembly, HideBySig
-    IsCollectible(RuntimeTypeHandle): PrivateScope, Assembly, Static, HideBySig, PinvokeImpl, HasSecurity
     HasInstantiation(): PrivateScope, Assembly, HideBySig
     GetGenericTypeDefinition(RuntimeType): PrivateScope, Assembly, Static, HideBySig
     IsGenericVariable(): PrivateScope, Assembly, HideBySig
@@ -9217,12 +9235,12 @@ Class System.IO.UnmanagedMemoryAccessor: AutoLayout, AnsiClass, Class, Public, B
     WriteArray(Int64, T[], Int32, Int32): PrivateScope, Public, HideBySig
 Class System.IO.UnmanagedMemoryStream: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.IO.Stream
-    Void .ctor(Byte*, Int64, Int64, System.IO.FileAccess, Boolean): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName
     Void .ctor(System.Runtime.InteropServices.SafeBuffer, Int64, Int64): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(System.Runtime.InteropServices.SafeBuffer, Int64, Int64, System.IO.FileAccess): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(System.Runtime.InteropServices.SafeBuffer, Int64, Int64, System.IO.FileAccess, Boolean): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName
     Void .ctor(Byte*, Int64): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(Byte*, Int64, Int64, System.IO.FileAccess): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Byte*, Int64, Int64, System.IO.FileAccess, Boolean): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName
   Fields:
     Boolean _isOpen : Assembly
   Properties:
@@ -9237,10 +9255,6 @@ Class System.IO.UnmanagedMemoryStream: AutoLayout, AnsiClass, Class, Public, Bef
   Methods:
     Initialize(SafeBuffer, Int64, Int64, FileAccess, Boolean): PrivateScope, Assembly, HideBySig
     Initialize(Byte*, Int64, Int64, FileAccess, Boolean): PrivateScope, Assembly, HideBySig
-    get_PositionPointer(): PrivateScope, Public, HideBySig, SpecialName
-    Read(Byte[](In, Out), Int32, Int32): PrivateScope, Public, Virtual, HideBySig
-    ReadByte(): PrivateScope, Public, Virtual, HideBySig
-    Write(Byte[], Int32, Int32): PrivateScope, Public, Virtual, HideBySig
     get_CanRead(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     get_CanSeek(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     get_CanWrite(): PrivateScope, Public, Virtual, HideBySig, SpecialName
@@ -9250,11 +9264,15 @@ Class System.IO.UnmanagedMemoryStream: AutoLayout, AnsiClass, Class, Public, Bef
     get_Capacity(): PrivateScope, Public, HideBySig, SpecialName
     get_Position(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     set_Position(Int64): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    get_PositionPointer(): PrivateScope, Public, HideBySig, SpecialName
     set_PositionPointer(Byte*): PrivateScope, Public, HideBySig, SpecialName
     get_Pointer(): PrivateScope, Assembly, HideBySig, SpecialName
+    Read(Byte[](In, Out), Int32, Int32): PrivateScope, Public, Virtual, HideBySig
     ReadAsync(Byte[], Int32, Int32, CancellationToken): PrivateScope, Public, Virtual, HideBySig, HasSecurity
+    ReadByte(): PrivateScope, Public, Virtual, HideBySig
     Seek(Int64, SeekOrigin): PrivateScope, Public, Virtual, HideBySig
     SetLength(Int64): PrivateScope, Public, Virtual, HideBySig
+    Write(Byte[], Int32, Int32): PrivateScope, Public, Virtual, HideBySig
     WriteAsync(Byte[], Int32, Int32, CancellationToken): PrivateScope, Public, Virtual, HideBySig, HasSecurity
     WriteByte(Byte): PrivateScope, Public, Virtual, HideBySig
 Class System.IO.UnmanagedMemoryStreamWrapper: AutoLayout, AnsiClass, Class, Sealed, BeforeFieldInit
@@ -9941,9 +9959,9 @@ Class System.Security.HostSecurityManager: AutoLayout, AnsiClass, Class, Public,
     GenerateAssemblyEvidence(Type, Assembly): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
 Class System.Security.NamedPermissionSet: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable, BeforeFieldInit
   :System.Security.PermissionSet
+    Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(System.Security.NamedPermissionSet): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName
-    Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(System.String, System.Security.Permissions.PermissionState): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(System.String, System.Security.PermissionSet): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(System.Security.SecurityElement): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName
@@ -10433,9 +10451,9 @@ Class System.Security.SecurityRuntime: AutoLayout, AnsiClass, Class, BeforeField
     PermitOnly(PermissionSet, StackCrawlMark&): PrivateScope, Assembly, Static, HideBySig
     RevertAssert(StackCrawlMark&): PrivateScope, Assembly, Static, HideBySig
     RevertPermitOnly(StackCrawlMark&): PrivateScope, Assembly, Static, HideBySig
+    RevertAll(StackCrawlMark&): PrivateScope, Assembly, Static, HideBySig
     Deny(PermissionSet, StackCrawlMark&): PrivateScope, Assembly, Static, HideBySig
     RevertDeny(StackCrawlMark&): PrivateScope, Assembly, Static, HideBySig
-    RevertAll(StackCrawlMark&): PrivateScope, Assembly, Static, HideBySig
 Struct System.Security.SecurityZone: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable
   :System.Enum
   Fields:
@@ -11030,8 +11048,8 @@ Class System.Security.AccessControl.FileSystemSecurity: AutoLayout, AnsiClass, C
     get_AuditRuleType(): PrivateScope, Public, Virtual, HideBySig, SpecialName
 Class System.Security.AccessControl.FileSecurity: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Security.AccessControl.FileSystemSecurity
-    Void .ctor(System.String, System.Security.AccessControl.AccessControlSections): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName, HasSecurity
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.Security.AccessControl.AccessControlSections): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName, HasSecurity
     Void .ctor(Microsoft.Win32.SafeHandles.SafeFileHandle, System.String, System.Security.AccessControl.AccessControlSections): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName, HasSecurity
 Class System.Security.AccessControl.DirectorySecurity: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Security.AccessControl.FileSystemSecurity
@@ -11119,7 +11137,6 @@ Class System.Security.AccessControl.ObjectSecurity: AutoLayout, AnsiClass, Class
     System.Type AccessRuleType 'get ' : 
     System.Type AuditRuleType 'get ' : 
   Methods:
-    GetSecurityDescriptorBinaryForm(): PrivateScope, Public, HideBySig
     GetOwner(Type): PrivateScope, Public, HideBySig
     SetOwner(IdentityReference): PrivateScope, Public, HideBySig
     GetGroup(Type): PrivateScope, Public, HideBySig
@@ -11136,6 +11153,7 @@ Class System.Security.AccessControl.ObjectSecurity: AutoLayout, AnsiClass, Class
     GetSecurityDescriptorSddlForm(AccessControlSections): PrivateScope, Public, HideBySig
     SetSecurityDescriptorSddlForm(String): PrivateScope, Public, HideBySig
     SetSecurityDescriptorSddlForm(String, AccessControlSections): PrivateScope, Public, HideBySig
+    GetSecurityDescriptorBinaryForm(): PrivateScope, Public, HideBySig
     SetSecurityDescriptorBinaryForm(Byte[]): PrivateScope, Public, HideBySig
     SetSecurityDescriptorBinaryForm(Byte[], AccessControlSections): PrivateScope, Public, HideBySig
     get_AccessRightType(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
@@ -11244,9 +11262,9 @@ Class System.Security.AccessControl.Privilege: AutoLayout, AnsiClass, Class, Sea
   Properties:
     Boolean NeedToRevert 'get ' : 
   Methods:
-    Revert(): PrivateScope, Public, HideBySig
     Enable(): PrivateScope, Public, HideBySig
     get_NeedToRevert(): PrivateScope, Public, HideBySig, SpecialName
+    Revert(): PrivateScope, Public, HideBySig
 Class System.Security.AccessControl.PrivilegeNotHeldException: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable, BeforeFieldInit
   :System.UnauthorizedAccessException
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -11512,9 +11530,9 @@ Class System.Security.AccessControl.Win32: AutoLayout, AnsiClass, Class, Abstrac
   Fields:
     Int32 TRUE = 1 : Assembly, Static, Literal, HasDefault
   Methods:
+    ConvertSdToSddl(Byte[], Int32, SecurityInfos, String&(Out)): PrivateScope, Assembly, Static, HideBySig, HasSecurity
     GetSecurityInfo(ResourceType, String, SafeHandle, AccessControlSections, RawSecurityDescriptor&(Out)): PrivateScope, Assembly, Static, HideBySig
     SetSecurityInfo(ResourceType, String, SafeHandle, SecurityInfos, SecurityIdentifier, SecurityIdentifier, GenericAcl, GenericAcl): PrivateScope, Assembly, Static, HideBySig
-    ConvertSdToSddl(Byte[], Int32, SecurityInfos, String&(Out)): PrivateScope, Assembly, Static, HideBySig, HasSecurity
 Class System.Security.Cryptography.CapiNative: AutoLayout, AnsiClass, Class, Abstract, Sealed, BeforeFieldInit
   Methods:
     AcquireCsp(String, String, ProviderType, CryptAcquireContextFlags): PrivateScope, Assembly, Static, HideBySig
@@ -11782,8 +11800,8 @@ Class System.Security.Cryptography.CryptoConfig: AutoLayout, AnsiClass, Class, P
     Boolean AllowOnlyFipsAlgorithms 'get ' : 
   Methods:
     get_AllowOnlyFipsAlgorithms(): PrivateScope, Public, Static, HideBySig, SpecialName
-    CreateFromName(String, Object[]): PrivateScope, Public, Static, HideBySig
     AddAlgorithm(Type, String[]): PrivateScope, Public, Static, HideBySig
+    CreateFromName(String, Object[]): PrivateScope, Public, Static, HideBySig
     CreateFromName(String): PrivateScope, Public, Static, HideBySig
     AddOID(String, String[]): PrivateScope, Public, Static, HideBySig
     MapNameToOID(String): PrivateScope, Public, Static, HideBySig
@@ -14342,8 +14360,8 @@ Interface System.Security.Principal.IIdentity: AutoLayout, AnsiClass, Class, Pub
     Boolean IsAuthenticated 'get ' : 
   Methods:
     get_Name(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
-    get_IsAuthenticated(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     get_AuthenticationType(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_IsAuthenticated(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
 Interface System.Security.Principal.IPrincipal: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
   Properties:
     System.Security.Principal.IIdentity Identity 'get ' : 
@@ -15036,8 +15054,6 @@ Class System.Security.Policy.CodeGroup: AutoLayout, AnsiClass, Class, Public, Ab
     System.String AttributeString 'get ' : 
     System.String MergeLogic 'get ' : 
   Methods:
-    FromXml(SecurityElement, PolicyLevel): PrivateScope, Public, HideBySig
-    ParseChildren(): PrivateScope, Assembly, HideBySig
     AddChild(CodeGroup): PrivateScope, Public, HideBySig
     AddChildInternal(CodeGroup): PrivateScope, Assembly, HideBySig
     RemoveChild(CodeGroup): PrivateScope, Public, HideBySig
@@ -15063,6 +15079,8 @@ Class System.Security.Policy.CodeGroup: AutoLayout, AnsiClass, Class, Public, Ab
     ToXml(PolicyLevel): PrivateScope, Public, HideBySig
     GetTypeName(): PrivateScope, Assembly, Virtual, HideBySig, VtableLayoutMask, CheckAccessOnOverride
     ToXml(PolicyLevel, String): PrivateScope, Assembly, HideBySig
+    FromXml(SecurityElement, PolicyLevel): PrivateScope, Public, HideBySig
+    ParseChildren(): PrivateScope, Assembly, HideBySig
     Equals(Object): PrivateScope, Public, Virtual, HideBySig
     Equals(CodeGroup, Boolean): PrivateScope, Public, HideBySig
     GetHashCode(): PrivateScope, Public, Virtual, HideBySig
@@ -15414,11 +15432,6 @@ Class System.Security.Policy.PolicyLevel: AutoLayout, AnsiClass, Class, Public, 
     System.Collections.IList NamedPermissionSets 'get ' : 
     System.Collections.IList FullTrustAssemblies 'get ' :  (Obsolete)
   Methods:
-    GetNamedPermissionSet(String): PrivateScope, Public, HideBySig
-    Resolve(Evidence): PrivateScope, Public, HideBySig
-    FromXml(SecurityElement): PrivateScope, Public, HideBySig
-    GetBuiltInSet(String): PrivateScope, Assembly, Static, HideBySig
-    Resolve(Evidence, Int32, Byte[]): PrivateScope, Assembly, HideBySig
     GetLocationFromType(PolicyLevelType): PrivateScope, Assembly, Static, HideBySig
     CreateAppDomainLevel(): PrivateScope, Public, Static, HideBySig (Obsolete)
     get_Label(): PrivateScope, Public, HideBySig, SpecialName
@@ -15439,10 +15452,15 @@ Class System.Security.Policy.PolicyLevel: AutoLayout, AnsiClass, Class, Public, 
     RemoveNamedPermissionSet(NamedPermissionSet): PrivateScope, Public, HideBySig
     RemoveNamedPermissionSet(String): PrivateScope, Public, HideBySig
     ChangeNamedPermissionSet(String, PermissionSet): PrivateScope, Public, HideBySig
+    GetNamedPermissionSet(String): PrivateScope, Public, HideBySig
     Recover(): PrivateScope, Public, HideBySig
     Reset(): PrivateScope, Public, HideBySig
+    Resolve(Evidence): PrivateScope, Public, HideBySig
     ToXml(): PrivateScope, Public, HideBySig
+    FromXml(SecurityElement): PrivateScope, Public, HideBySig
+    GetBuiltInSet(String): PrivateScope, Assembly, Static, HideBySig
     GetNamedPermissionSetInternal(String): PrivateScope, Assembly, HideBySig
+    Resolve(Evidence, Int32, Byte[]): PrivateScope, Assembly, HideBySig
 Class System.Security.Policy.CodeGroupStackFrame: AutoLayout, AnsiClass, Class, Sealed, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
@@ -16486,6 +16504,4 @@ Struct System.Globalization.CalendarAlgorithmType: AutoLayout, AnsiClass, Class,
   Fields:
     Int32 value__ : Public, SpecialName, RTSpecialName
     System.Globalization.CalendarAlgorithmType Unknown = 0 : Public, Static, Literal, HasDefault
-    System.Globalization.CalendarAlgorithmType SolarCalendar = 1 : Public, Static, Literal, HasDefault
-    System.Globalization.CalendarAlgorithmType LunarCalendar = 2 : Public, Static, Literal, HasDefault
-    Sy
+    System.Globalization.CalendarAlgorithmType Solar

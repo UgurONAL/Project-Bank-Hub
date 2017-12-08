@@ -1,4 +1,6 @@
 
+#include "mysql\include\mysql.h"
+#include "msclr\marshal_cppstd.h"
 
 namespace BankHub {
 
@@ -35,13 +37,14 @@ namespace BankHub {
 			}
 		}
 	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::TextBox^  textBox1;
+
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::TextBox^  textBox2;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::TextBox^  textBox3;
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::ComboBox^  comboBox1;
 	protected:
 
 	private:
@@ -58,13 +61,13 @@ namespace BankHub {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -75,13 +78,6 @@ namespace BankHub {
 			this->label1->Size = System::Drawing::Size(98, 13);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Para Transferi Yap!";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(201, 83);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 20);
-			this->textBox1->TabIndex = 1;
 			// 
 			// label2
 			// 
@@ -135,18 +131,61 @@ namespace BankHub {
 			this->label4->TabIndex = 7;
 			this->label4->Text = L"Miktar";
 			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(201, 83);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(100, 21);
+			this->comboBox1->TabIndex = 8;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MoneyTransferForm::comboBox1_SelectedIndexChanged);
+			
+
+			MYSQL *mysql;
+			MYSQL_RES *result;
+			MYSQL_ROW row;
+			MYSQL *conn;
+			int sorgu;
+
+			std::string sql = "SELECT id FROM login";
+
+			mysql = mysql_init(NULL);
+			conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+			sorgu = mysql_query(conn, sql.c_str());
+			result = mysql_store_result(conn);
+			row = mysql_fetch_row(result);
+
+			char *id = row[0];
+			std::string _id = id;
+
+			std::string sql2 = "SELECT id FROM accounts WHERE user_id =";
+			sql2 += _id;
+			sorgu = mysql_query(conn, sql2.c_str());
+			result = mysql_store_result(conn);
+
+			int i = 0;
+			while ((row = mysql_fetch_row(result)) != NULL) // Eðer veritabanýndan bilgi gelmiþse
+			{
+				char *a = row[0];
+				std::string _a = a;
+				String^ as = gcnew String(_a.c_str());
+				this->comboBox1->Items->Add(as);
+				i++;
+			}
+			
+			// 
 			// MoneyTransferForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(467, 292);
+			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
 			this->Name = L"MoneyTransferForm";
 			this->Text = L"MoneyTransferForm";
@@ -158,9 +197,79 @@ namespace BankHub {
 	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		String^ fromNo = textBox1->Text;
+		String^ fromNo = comboBox1->Text;
 		String^ toNo = textBox2->Text;
 		String^ miktar = textBox3->Text;
+
+		msclr::interop::marshal_context context;
+		std::string _fromNo = context.marshal_as<std::string>(fromNo);
+		msclr::interop::marshal_context context2;
+		std::string _toNo = context2.marshal_as<std::string>(toNo);
+		msclr::interop::marshal_context context3;
+		std::string _miktar = context3.marshal_as<std::string>(miktar);
+
+		MYSQL *mysql;
+		MYSQL_RES *result;
+		MYSQL_ROW row;
+		MYSQL *conn;
+		int sorgu;
+
+		mysql = mysql_init(NULL);
+		conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+
+		std::string sql2 = "SELECT balance FROM accounts WHERE id=";
+		sql2 += _fromNo;
+
+		sorgu = mysql_query(conn, sql2.c_str());
+		result = mysql_store_result(conn);
+		row = mysql_fetch_row(result);
+
+		char *balance = row[0];
+		std::string _balance = balance;
+
+		int m = atoi(_miktar.c_str());
+		int b = atoi(_balance.c_str());
+
+		std::string sql3 = "SELECT id FROM accounts WHERE id=";
+		sql3 += _toNo;
+
+		sorgu = mysql_query(conn, sql3.c_str());
+		result = mysql_store_result(conn);
+		row = mysql_fetch_row(result);
+
+		if (row == NULL) {
+			MessageBox::Show("Gönderilecek hesap numarasý bulunmamaktadýr.");
+		}
+		else {
+			if (m > b) {
+				MessageBox::Show("Bu hesapta yeterli para bulunmamaktadýr.");
+			}
+			else {
+				std::string sql4 = "UPDATE accounts SET balance=balance-";
+				sql4 += _miktar;
+				sql4 += " WHERE id=";
+				sql4 += _fromNo;
+
+				sorgu = mysql_query(conn, sql4.c_str());
+				result = mysql_store_result(conn);
+
+				sql4 = "UPDATE accounts SET balance=balance+";
+				sql4 += _miktar;
+				sql4 += " WHERE id=";
+				sql4 += _toNo;
+
+				sorgu = mysql_query(conn, sql4.c_str());
+				result = mysql_store_result(conn);
+
+				MessageBox::Show("Para Transferi Gerçekleþtirildi.");
+				this->Hide();
+			}
+		}
+
+		
+
+	}
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 	}
 };
 }

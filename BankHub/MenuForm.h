@@ -186,7 +186,7 @@ namespace BankHub {
 		moneyTransferForm->Show();
 	}
 	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-		Close();
+		Application::Exit();
 	}
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}

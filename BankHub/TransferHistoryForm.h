@@ -111,10 +111,19 @@ namespace BankHub {
 				this->dataGridView1->Rows->Add();
 				for (size_t j = 0; j < 4; j++)
 				{
-					char *a = row[j];
-					std::string _a = a;
-					String^ as = gcnew String(_a.c_str());
-					this->dataGridView1->Rows[i]->Cells[j]->Value = as;
+
+					if (j == 2) {
+						char *a = row[j];
+						std::string _a = a;
+						_a += " TL";
+						String^ as = gcnew String(_a.c_str());
+						this->dataGridView1->Rows[i]->Cells[j]->Value = as;
+					}else {
+						char *a = row[j];
+						std::string _a = a;
+						String^ as = gcnew String(_a.c_str());
+						this->dataGridView1->Rows[i]->Cells[j]->Value = as;
+					}					
 				}
 				i++;
 			}

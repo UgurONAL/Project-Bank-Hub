@@ -1,4 +1,5 @@
-#pragma once
+#include "mysql\include\mysql.h"
+#include "msclr\marshal_cppstd.h"
 
 namespace BankHub {
 
@@ -40,6 +41,11 @@ namespace BankHub {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::TextBox^  textBox3;
+	private: System::Windows::Forms::TextBox^  textBox4;
+	private: System::Windows::Forms::Label^  label5;
+	private: System::Windows::Forms::Button^  button1;
 
 	protected:
 
@@ -61,6 +67,11 @@ namespace BankHub {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -68,7 +79,7 @@ namespace BankHub {
 			this->textBox1->Location = System::Drawing::Point(100, 70);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->ReadOnly = true;
-			this->textBox1->Size = System::Drawing::Size(100, 20);
+			this->textBox1->Size = System::Drawing::Size(126, 20);
 			this->textBox1->TabIndex = 0;
 			// 
 			// textBox2
@@ -76,7 +87,7 @@ namespace BankHub {
 			this->textBox2->Location = System::Drawing::Point(100, 107);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->ReadOnly = true;
-			this->textBox2->Size = System::Drawing::Size(100, 20);
+			this->textBox2->Size = System::Drawing::Size(126, 20);
 			this->textBox2->TabIndex = 1;
 			// 
 			// label1
@@ -106,11 +117,59 @@ namespace BankHub {
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Vatandaþlýk No";
 			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(49, 143);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(43, 13);
+			this->label4->TabIndex = 5;
+			this->label4->Text = L"Telefon";
+			// 
+			// textBox3
+			// 
+			this->textBox3->Location = System::Drawing::Point(100, 140);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(126, 20);
+			this->textBox3->TabIndex = 6;
+			// 
+			// textBox4
+			// 
+			this->textBox4->Location = System::Drawing::Point(100, 175);
+			this->textBox4->Multiline = true;
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->Size = System::Drawing::Size(126, 59);
+			this->textBox4->TabIndex = 7;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(54, 178);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(34, 13);
+			this->label5->TabIndex = 8;
+			this->label5->Text = L"Adres";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(128, 240);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 9;
+			this->button1->Text = L"Güncelle";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &UserInformationForm::button1_Click);
+			// 
 			// UserInformationForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 261);
+			this->ClientSize = System::Drawing::Size(310, 306);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->textBox4);
+			this->Controls->Add(this->textBox3);
+			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
@@ -125,8 +184,90 @@ namespace BankHub {
 		}
 #pragma endregion
 	private: System::Void UserInformationForm_Load(System::Object^  sender, System::EventArgs^  e) {
-		textBox1->Text = "Ali";
-		textBox2->Text = "33139684704";
+		MYSQL *mysql;
+		MYSQL_RES *result;
+		MYSQL_ROW row;
+		MYSQL *conn;
+		int sorgu;
+
+		std::string sql = "SELECT id FROM login";
+
+		mysql = mysql_init(NULL);
+		conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+		
+		sorgu = mysql_query(conn, sql.c_str());
+		result = mysql_store_result(conn);
+		row = mysql_fetch_row(result);
+
+		char *id = row[0];
+		std::string _id = id;
+
+		sql = "SELECT name, citizenship_no, phone, address FROM users WHERE id =";
+		sql += _id;
+
+		sorgu = mysql_query(conn, sql.c_str());
+		result = mysql_store_result(conn);
+		row = mysql_fetch_row(result);
+
+		char *name = row[0];
+		std::string _name = name;
+		char *tc = row[1];
+		std::string _tc = tc;
+		char *phone = row[2];
+		std::string _phone = phone;
+		char *adress = row[3];
+		std::string _adress = adress;
+
+		String^ a = gcnew String(_name.c_str());
+		textBox1->Text = a;
+		String^ b = gcnew String(_tc.c_str());
+		textBox2->Text = b;
+		String^ c = gcnew String(_phone.c_str());
+		textBox3->Text = c;
+		String^ d = gcnew String(_adress.c_str());
+		textBox4->Text = d;
+	}
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		String^ phone = textBox3->Text;
+		String^ address = textBox4->Text;
+
+		msclr::interop::marshal_context context;
+		std::string _phone = context.marshal_as<std::string>(phone);
+		msclr::interop::marshal_context context2;
+		std::string _address = context2.marshal_as<std::string>(address);
+
+		MYSQL *mysql;
+		MYSQL_RES *result;
+		MYSQL_ROW row;
+		MYSQL *conn;
+		int sorgu;
+
+		std::string sql = "SELECT id FROM login";
+
+		mysql = mysql_init(NULL);
+		conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+
+		sorgu = mysql_query(conn, sql.c_str());
+		result = mysql_store_result(conn);
+		row = mysql_fetch_row(result);
+
+		char *id = row[0];
+		std::string _id = id;
+
+		sql = "UPDATE users SET phone = ";
+		sql += _phone;
+		sql += " ,";
+		sql += "address = '";
+		sql += _address;
+		sql += "' WHERE id = ";
+		sql += _id;
+
+		sorgu = mysql_query(conn, sql.c_str());
+		result = mysql_store_result(conn);
+
+		MessageBox::Show("Profiliniz Güncellenmiþtir.");
+		this->Hide();
+
 	}
 };
 }

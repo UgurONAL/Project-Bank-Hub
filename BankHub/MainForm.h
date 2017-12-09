@@ -37,7 +37,7 @@ namespace BankHub {
 		}
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::Button^  button3;
+
 	protected:
 
 	private:
@@ -55,12 +55,11 @@ namespace BankHub {
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(112, 238);
+			this->button1->Location = System::Drawing::Point(80, 159);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(137, 32);
 			this->button1->TabIndex = 0;
@@ -70,7 +69,7 @@ namespace BankHub {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(38, 93);
+			this->button2->Location = System::Drawing::Point(97, 74);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(97, 41);
 			this->button2->TabIndex = 1;
@@ -78,22 +77,11 @@ namespace BankHub {
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MainForm::button2_Click);
 			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(208, 93);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(105, 41);
-			this->button3->TabIndex = 2;
-			this->button3->Text = L"Yönetici Giriþi";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &MainForm::button3_Click);
-			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(356, 326);
-			this->Controls->Add(this->button3);
+			this->ClientSize = System::Drawing::Size(314, 274);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Name = L"MainForm";
@@ -110,7 +98,6 @@ namespace BankHub {
 		usrLogForm->Show();
 		this->Hide();
 	}
-	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-	}
+	
 	};
 }

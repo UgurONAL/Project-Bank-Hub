@@ -99,7 +99,7 @@ namespace BankHub {
 			char *id = row[0];
 			std::string _id = id;
 
-			std::string sql2 = "SELECT from_account_no, destination_account_no, amount, created_at FROM transactions WHERE user_id = ";
+			std::string sql2 = "SELECT from_account_no, destination_account_no, amount, created_at, bill FROM transactions WHERE user_id = ";
 			sql2 += _id;
 			sorgu = mysql_query(conn, sql2.c_str());
 			result = mysql_store_result(conn);
@@ -121,8 +121,17 @@ namespace BankHub {
 					}else {
 						char *a = row[j];
 						std::string _a = a;
-						String^ as = gcnew String(_a.c_str());
-						this->dataGridView1->Rows[i]->Cells[j]->Value = as;
+
+						if (_a == "0") {
+							char *x = row[4];
+							std::string _x = x;
+							String^ as = gcnew String(_x.c_str());
+							this->dataGridView1->Rows[i]->Cells[j]->Value = as;
+
+						}else {
+							String^ as = gcnew String(_a.c_str());
+							this->dataGridView1->Rows[i]->Cells[j]->Value = as;
+						}
 					}					
 				}
 				i++;

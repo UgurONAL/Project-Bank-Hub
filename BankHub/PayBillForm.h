@@ -266,6 +266,29 @@ namespace BankHub {
 			result = mysql_store_result(conn);
 			//row = mysql_fetch_row(result);
 
+			sql2 = "SELECT type FROM loans WHERE id=";
+			sql2 += billid;
+
+			sorgu = mysql_query(conn, sql2.c_str());
+			result = mysql_store_result(conn);
+			row = mysql_fetch_row(result);
+
+			char *type = row[0];
+			std::string _type = type;
+
+			sql2 = "INSERT INTO transactions (id, user_id, from_account_no, destination_account_no, bill, amount, created_at) VALUES (NULL, ";
+			sql2 += _id;
+			sql2 += ",";
+			sql2 += accountid;
+			sql2 += ",0,'";
+			sql2 += _type;
+			sql2 += "',";
+			sql2 += billamount;
+			sql2 += ",NOW())";
+
+			sorgu = mysql_query(conn, sql2.c_str());
+			result = mysql_store_result(conn);
+
 			sql2 = "DELETE FROM loans WHERE id=";
 			sql2 += billid;
 

@@ -147,6 +147,7 @@
     <ClCompile Include="MenuForm.cpp" />
     <ClCompile Include="MoneyTransferForm.cpp" />
     <ClCompile Include="OpenAccountForm.cpp" />
+    <ClCompile Include="PayBillForm.cpp" />
     <ClCompile Include="TransferHistoryForm.cpp" />
     <ClCompile Include="UserInformationForm.cpp" />
     <ClCompile Include="UserLogin.cpp" />
@@ -166,6 +167,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="OpenAccountForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PayBillForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="TransferHistoryForm.h">
@@ -193,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OpenAccountForm.resx">
       <DependentUpon>OpenAccountForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PayBillForm.resx">
+      <DependentUpon>PayBillForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TransferHistoryForm.resx">
       <DependentUpon>TransferHistoryForm.h</DependentUpon>

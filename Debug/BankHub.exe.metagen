@@ -3,6 +3,7 @@
   BankHub.MenuForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.MoneyTransferForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.OpenAccountForm.resources - Embedded, ContainedInManifestFile, 
+  BankHub.PayBillForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.TransferHistoryForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.UserInformationForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.UserLogin.resources - Embedded, ContainedInManifestFile, 
@@ -34,6 +35,9 @@ Class BankHub.OpenAccountForm: AutoLayout, AnsiClass, Class, Public, BeforeField
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class BankHub.TransferHistoryForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BankHub.PayBillForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class BankHub.MenuForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit

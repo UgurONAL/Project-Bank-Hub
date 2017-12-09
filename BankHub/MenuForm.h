@@ -4,6 +4,7 @@
 #include "MoneyTransferForm.h"
 #include "OpenAccountForm.h"
 #include "TransferHistoryForm.h"
+#include "PayBillForm.h"
 
 namespace BankHub {
 
@@ -75,7 +76,7 @@ namespace BankHub {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(105, 41);
+			this->label1->Location = System::Drawing::Point(112, 29);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(61, 13);
 			this->label1->TabIndex = 0;
@@ -84,7 +85,7 @@ namespace BankHub {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(98, 81);
+			this->button1->Location = System::Drawing::Point(98, 59);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 1;
@@ -94,7 +95,7 @@ namespace BankHub {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(98, 110);
+			this->button2->Location = System::Drawing::Point(98, 88);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 2;
@@ -104,16 +105,17 @@ namespace BankHub {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(98, 139);
+			this->button3->Location = System::Drawing::Point(98, 117);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(75, 23);
 			this->button3->TabIndex = 3;
 			this->button3->Text = L"Fatura Öde";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MenuForm::button3_Click);
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(98, 168);
+			this->button4->Location = System::Drawing::Point(98, 146);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(75, 23);
 			this->button4->TabIndex = 4;
@@ -123,7 +125,7 @@ namespace BankHub {
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(98, 197);
+			this->button5->Location = System::Drawing::Point(98, 175);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(75, 23);
 			this->button5->TabIndex = 5;
@@ -133,7 +135,7 @@ namespace BankHub {
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(98, 257);
+			this->button6->Location = System::Drawing::Point(98, 233);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(75, 23);
 			this->button6->TabIndex = 6;
@@ -143,7 +145,7 @@ namespace BankHub {
 			// 
 			// button7
 			// 
-			this->button7->Location = System::Drawing::Point(82, 228);
+			this->button7->Location = System::Drawing::Point(85, 204);
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(104, 23);
 			this->button7->TabIndex = 7;
@@ -195,6 +197,10 @@ namespace BankHub {
 	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
 		TransferHistoryForm^ tarnsfer = gcnew TransferHistoryForm();
 		tarnsfer->Show();
+	}
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		PayBillForm^ payBillForm = gcnew PayBillForm();
+		payBillForm->Show();
 	}
 };
 }

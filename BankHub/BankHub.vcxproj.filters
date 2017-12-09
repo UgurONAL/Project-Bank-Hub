@@ -42,6 +42,9 @@
     <ClCompile Include="TransferHistoryForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PayBillForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -71,6 +74,9 @@
     <ClInclude Include="TransferHistoryForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PayBillForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
@@ -92,6 +98,9 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="OpenAccountForm.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransferHistoryForm.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

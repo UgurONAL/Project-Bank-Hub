@@ -158,6 +158,9 @@ namespace BankHub {
 
 		mysql = mysql_init(NULL);
 		conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+		//conn = mysql_real_connect(mysql, "mysql.itu.edu.tr", "kurtbu", "q8VPBFHRg6", "kurtbu", 0, NULL, 0);
+		//conn = mysql_real_connect(mysql, "srv.digitaltrade.com.tr:8080/dtmyadmin", "bunyaminkurt", "bunyamin*123", "bunyaminkurt", 0, NULL, 0);
+		
 		sorgu = mysql_query(conn, sql.c_str());
 		result = mysql_store_result(conn);
 		row = mysql_fetch_row(result);

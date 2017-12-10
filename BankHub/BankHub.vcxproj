@@ -142,6 +142,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccountForm.cpp" />
+    <ClCompile Include="AdminAccountForm.cpp" />
+    <ClCompile Include="AdminAddBillForm.cpp" />
+    <ClCompile Include="AdminMenuForm.cpp" />
+    <ClCompile Include="AdminUserAddForm.cpp" />
+    <ClCompile Include="AdminUserForm.cpp" />
     <ClCompile Include="Conn.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuForm.cpp" />
@@ -154,6 +159,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccountForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminAccountForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminAddBillForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminMenuForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminUserAddForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminUserForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Conn.h" />
@@ -185,6 +205,21 @@
   <ItemGroup>
     <EmbeddedResource Include="AccountForm.resx">
       <DependentUpon>AccountForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminAccountForm.resx">
+      <DependentUpon>AdminAccountForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminAddBillForm.resx">
+      <DependentUpon>AdminAddBillForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminMenuForm.resx">
+      <DependentUpon>AdminMenuForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminUserAddForm.resx">
+      <DependentUpon>AdminUserAddForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminUserForm.resx">
+      <DependentUpon>AdminUserForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>

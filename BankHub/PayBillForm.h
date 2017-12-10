@@ -94,7 +94,6 @@ namespace BankHub {
 
 			sorgu = mysql_query(conn, sql.c_str());
 			result = mysql_store_result(conn);
-			//row = mysql_fetch_row(result);
 
 			int i = 0;
 			while ((row = mysql_fetch_row(result)) != NULL) // Eðer veritabanýndan bilgi gelmiþse
@@ -111,7 +110,6 @@ namespace BankHub {
 				_c += " - ";	
 				_c += _b;
 				_c += " TL";
-				
 
 				String^ as = gcnew String(_c.c_str());
 				this->comboBox1->Items->Add(as);
@@ -143,7 +141,6 @@ namespace BankHub {
 
 			sorgu = mysql_query(conn, sql.c_str());
 			result = mysql_store_result(conn);
-			//row = mysql_fetch_row(result);
 
 			i = 0;
 			while ((row = mysql_fetch_row(result)) != NULL) // Eðer veritabanýndan bilgi gelmiþse
@@ -264,7 +261,6 @@ namespace BankHub {
 
 			sorgu = mysql_query(conn, sql2.c_str());
 			result = mysql_store_result(conn);
-			//row = mysql_fetch_row(result);
 
 			sql2 = "SELECT type FROM loans WHERE id=";
 			sql2 += billid;

@@ -82,7 +82,7 @@ namespace BankHub {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Hoþgeldiniz";
 
-			MYSQL *mysql;
+			/*MYSQL *mysql;
 			MYSQL_RES *result;
 			MYSQL_ROW row;
 			MYSQL *conn;
@@ -114,7 +114,7 @@ namespace BankHub {
 			baslik += " !";
 			String^ as = gcnew String(baslik.c_str());
 
-			label1->Text = as;
+			label1->Text = as;*/
 
 			// 
 			// button1

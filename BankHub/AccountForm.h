@@ -98,7 +98,6 @@ namespace BankHub {
 			sql2 += _id;
 			sorgu = mysql_query(conn, sql2.c_str());
 			result = mysql_store_result(conn);
-			//row = mysql_fetch_row(result);
 
 			int i = 0;
 			while ((row = mysql_fetch_row(result)) != NULL) // Eðer veritabanýndan bilgi gelmiþse

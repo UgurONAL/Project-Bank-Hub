@@ -73,8 +73,6 @@ namespace BankHub {
 			MYSQL *conn;
 			int sorgu;
 
-			
-
 			mysql = mysql_init(NULL);
 			conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
 

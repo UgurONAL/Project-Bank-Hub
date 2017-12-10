@@ -46,6 +46,8 @@ namespace BankHub {
 	private: System::Windows::Forms::TextBox^  textBox4;
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::TextBox^  textBox5;
+	private: System::Windows::Forms::Label^  label6;
 
 	protected:
 
@@ -72,6 +74,8 @@ namespace BankHub {
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -152,7 +156,7 @@ namespace BankHub {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(128, 240);
+			this->button1->Location = System::Drawing::Point(119, 271);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 9;
@@ -160,11 +164,29 @@ namespace BankHub {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &UserInformationForm::button1_Click);
 			// 
+			// textBox5
+			// 
+			this->textBox5->Location = System::Drawing::Point(100, 241);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(126, 20);
+			this->textBox5->TabIndex = 10;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(66, 244);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(28, 13);
+			this->label6->TabIndex = 11;
+			this->label6->Text = L"Þifre";
+			// 
 			// UserInformationForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(310, 306);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->textBox5);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->textBox4);
@@ -202,7 +224,7 @@ namespace BankHub {
 		char *id = row[0];
 		std::string _id = id;
 
-		sql = "SELECT name, citizenship_no, phone, address FROM users WHERE id =";
+		sql = "SELECT name, citizenship_no, phone, address, passwords FROM users WHERE id =";
 		sql += _id;
 
 		sorgu = mysql_query(conn, sql.c_str());
@@ -217,6 +239,8 @@ namespace BankHub {
 		std::string _phone = phone;
 		char *adress = row[3];
 		std::string _adress = adress;
+		char *pass = row[4];
+		std::string _pass = pass;
 
 		String^ a = gcnew String(_name.c_str());
 		textBox1->Text = a;
@@ -226,15 +250,20 @@ namespace BankHub {
 		textBox3->Text = c;
 		String^ d = gcnew String(_adress.c_str());
 		textBox4->Text = d;
+		String^ passwords = gcnew String(_pass.c_str());
+		textBox5->Text = passwords;
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		String^ phone = textBox3->Text;
 		String^ address = textBox4->Text;
+		String^ pass = textBox5->Text;
 
 		msclr::interop::marshal_context context;
 		std::string _phone = context.marshal_as<std::string>(phone);
 		msclr::interop::marshal_context context2;
 		std::string _address = context2.marshal_as<std::string>(address);
+		msclr::interop::marshal_context context3;
+		std::string _pass = context3.marshal_as<std::string>(pass);
 
 		MYSQL *mysql;
 		MYSQL_RES *result;
@@ -257,7 +286,9 @@ namespace BankHub {
 		sql = "UPDATE users SET phone = ";
 		sql += _phone;
 		sql += " ,";
-		sql += "address = '";
+		sql += " passwords = '";
+		sql += _pass;
+		sql += "', address = '";
 		sql += _address;
 		sql += "' WHERE id = ";
 		sql += _id;

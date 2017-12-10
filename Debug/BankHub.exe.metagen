@@ -1,4 +1,9 @@
   BankHub.AccountForm.resources - Embedded, ContainedInManifestFile, 
+  BankHub.AdminAccountForm.resources - Embedded, ContainedInManifestFile, 
+  BankHub.AdminAddBillForm.resources - Embedded, ContainedInManifestFile, 
+  BankHub.AdminMenuForm.resources - Embedded, ContainedInManifestFile, 
+  BankHub.AdminUserAddForm.resources - Embedded, ContainedInManifestFile, 
+  BankHub.AdminUserForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.MainForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.MenuForm.resources - Embedded, ContainedInManifestFile, 
   BankHub.MoneyTransferForm.resources - Embedded, ContainedInManifestFile, 
@@ -23,6 +28,21 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
 Class BankHub.AccountForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BankHub.AdminAccountForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BankHub.AdminAddBillForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BankHub.AdminUserForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BankHub.AdminUserAddForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BankHub.AdminMenuForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class BankHub.UserInformationForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit

@@ -2,6 +2,7 @@
 #include "MenuForm.h";
 #include "mysql\include\mysql.h"
 #include "msclr\marshal_cppstd.h"
+#include "AdminMenuForm.h"
 
 #include <string>
 #include <string.h>
@@ -145,50 +146,54 @@ namespace BankHub {
 		msclr::interop::marshal_context context2;
 		std::string passStr = context2.marshal_as<std::string>(pass);
 
-		MenuForm ^ menuForm = gcnew MenuForm();
+		if (tcStr == "00000000000" && passStr == "admin") {
+			AdminMenuForm^ adminmenu = gcnew AdminMenuForm();
+			adminmenu->Show();
+			this->Hide();
+		}else {
 
-		MYSQL *mysql;
-		MYSQL_RES *result;
-		MYSQL_ROW row;
-		MYSQL *conn;
-		int sorgu;
+			MenuForm ^ menuForm = gcnew MenuForm();
 
-		std::string sql = "SELECT passwords, id FROM users WHERE citizenship_no = ";
-		sql += tcStr;
+			MYSQL *mysql;
+			MYSQL_RES *result;
+			MYSQL_ROW row;
+			MYSQL *conn;
+			int sorgu;
 
-		mysql = mysql_init(NULL);
-		conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
-		//conn = mysql_real_connect(mysql, "mysql.itu.edu.tr", "kurtbu", "q8VPBFHRg6", "kurtbu", 0, NULL, 0);
-		//conn = mysql_real_connect(mysql, "srv.digitaltrade.com.tr:8080/dtmyadmin", "bunyaminkurt", "bunyamin*123", "bunyaminkurt", 0, NULL, 0);
-		
-		sorgu = mysql_query(conn, sql.c_str());
-		result = mysql_store_result(conn);
-		row = mysql_fetch_row(result);
+			std::string sql = "SELECT passwords, id FROM users WHERE citizenship_no = ";
+			sql += tcStr;
 
-		if (row == NULL) {
-			MessageBox::Show("Girilen TC ile kayýtlý bir kullanýcý bulunmamaktadýr.", "LogIn", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		}
-		else {
-			char *passSql = row[0];
-			std::string abc = passSql;
+			mysql = mysql_init(NULL);
+			conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+			//conn = mysql_real_connect(mysql, "mysql.itu.edu.tr", "kurtbu", "q8VPBFHRg6", "kurtbu", 0, NULL, 0);
+			//conn = mysql_real_connect(mysql, "srv.digitaltrade.com.tr:8080/dtmyadmin", "bunyaminkurt", "bunyamin*123", "bunyaminkurt", 0, NULL, 0);
 
-			char *id = row[1];
-			std::string _id = id;
-			//std::string sql2 = "INSERT INTO login (id) VALUES (";
-			std::string sql2 = "UPDATE login SET id = ";
-			sql2 += _id;
-			//sql2 += ")";
-			sorgu = mysql_query(conn, sql2.c_str());
+			sorgu = mysql_query(conn, sql.c_str());
+			result = mysql_store_result(conn);
+			row = mysql_fetch_row(result);
 
-			if (abc == passStr) {
-				menuForm->Show();
-				this->Hide();
+			if (row == NULL) {
+				MessageBox::Show("Girilen TC ile kayýtlý bir kullanýcý bulunmamaktadýr.", "LogIn", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 			else {
-				MessageBox::Show("Hatalý Giriþ. Tekrar Deneyiniz.", "LogIn", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				char *passSql = row[0];
+				std::string abc = passSql;
+
+				char *id = row[1];
+				std::string _id = id;
+				std::string sql2 = "UPDATE login SET id = ";
+				sql2 += _id;
+				sorgu = mysql_query(conn, sql2.c_str());
+
+				if (abc == passStr) {
+					menuForm->Show();
+					this->Hide();
+				}
+				else {
+					MessageBox::Show("Hatalý Giriþ. Tekrar Deneyiniz.", "LogIn", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
 			}
 		}
-
 	}
 };
 }

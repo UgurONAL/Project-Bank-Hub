@@ -163,11 +163,16 @@ namespace BankHub {
 			std::string sql = "SELECT passwords, id FROM users WHERE citizenship_no = ";
 			sql += tcStr;
 
-			mysql = mysql_init(NULL);
-			conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
-			//conn = mysql_real_connect(mysql, "mysql.itu.edu.tr", "kurtbu", "q8VPBFHRg6", "kurtbu", 0, NULL, 0);
-			//conn = mysql_real_connect(mysql, "srv.digitaltrade.com.tr:8080/dtmyadmin", "bunyaminkurt", "bunyamin*123", "bunyaminkurt", 0, NULL, 0);
+			char* host = "db4free.net";
+			char* user = "bjwlf";
+			char* dbpassword = "linksys";
+			char* db = "bankhub";
+			int port = 3307;
 
+			mysql = mysql_init(NULL);
+			conn = mysql_real_connect(mysql, host, user, dbpassword, db, port, NULL, 0);
+			//conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+			
 			sorgu = mysql_query(conn, sql.c_str());
 			result = mysql_store_result(conn);
 			row = mysql_fetch_row(result);

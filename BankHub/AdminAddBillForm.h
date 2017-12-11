@@ -80,8 +80,15 @@ namespace BankHub {
 			MYSQL *conn;
 			int sorgu;
 
+			char* host = "db4free.net";
+			char* user = "bjwlf";
+			char* dbpassword = "linksys";
+			char* db = "bankhub";
+			int port = 3307;
+
 			mysql = mysql_init(NULL);
-			conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+			conn = mysql_real_connect(mysql, host, user, dbpassword, db, port, NULL, 0);
+			//conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
 
 			std::string sql = "SELECT id,name FROM users WHERE citizenship_no != 00000000000 ORDER BY id";
 
@@ -200,8 +207,15 @@ namespace BankHub {
 			MYSQL *conn;
 			int sorgu;
 
+			char* host = "db4free.net";
+			char* user = "bjwlf";
+			char* dbpassword = "linksys";
+			char* db = "bankhub";
+			int port = 3307;
+
 			mysql = mysql_init(NULL);
-			conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+			conn = mysql_real_connect(mysql, host, user, dbpassword, db, port, NULL, 0);
+			//conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
 
 			std::string sql = "INSERT INTO loans (id,user_id,type,amount,currency) VALUES (NULL,";
 			sql += uID;
@@ -214,8 +228,6 @@ namespace BankHub {
 			sorgu = mysql_query(conn, sql.c_str());
 			result = mysql_store_result(conn);
 
-			String^ aa = gcnew String(sql.c_str());
-			MessageBox::Show(aa);
 			MessageBox::Show("Fatura eklenmiştir.");
 			this->Hide();
 

@@ -231,8 +231,15 @@ namespace BankHub {
 			sql += _address;
 			sql += "')";
 
+			char* host = "db4free.net";
+			char* user = "bjwlf";
+			char* dbpassword = "linksys";
+			char* db = "bankhub";
+			int port = 3307;
+
 			mysql = mysql_init(NULL);
-			conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+			conn = mysql_real_connect(mysql, host, user, dbpassword, db, port, NULL, 0);
+			//conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
 
 			sorgu = mysql_query(conn, sql.c_str());
 			result = mysql_store_result(conn);

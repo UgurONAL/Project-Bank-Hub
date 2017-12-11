@@ -192,6 +192,7 @@
     <ClInclude Include="PayBillForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="TransferHistoryForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -245,6 +246,14 @@
     <EmbeddedResource Include="UserLogin.resx">
       <DependentUpon>UserLogin.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="IconResource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon.ico" />
+    <Image Include="icon1.ico" />
+    <Image Include="icon2.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

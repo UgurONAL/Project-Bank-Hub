@@ -100,8 +100,15 @@ namespace BankHub {
 
 			std::string sql = "SELECT a.id,u.name,a.balance,b.name FROM accounts a JOIN users u ON a.user_id = u.id JOIN banks b On a.bank_id = b.id ORDER BY a.id";
 
+			char* host = "db4free.net";
+			char* user = "bjwlf";
+			char* dbpassword = "linksys";
+			char* db = "bankhub";
+			int port = 3307;
+
 			mysql = mysql_init(NULL);
-			conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+			conn = mysql_real_connect(mysql, host, user, dbpassword, db, port, NULL, 0);
+			//conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
 
 			sorgu = mysql_query(conn, sql.c_str());
 			result = mysql_store_result(conn);
@@ -200,8 +207,15 @@ namespace BankHub {
 		MYSQL *conn;
 		int sorgu;
 
+		char* host = "db4free.net";
+		char* user = "bjwlf";
+		char* dbpassword = "linksys";
+		char* db = "bankhub";
+		int port = 3307;
+
 		mysql = mysql_init(NULL);
-		conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
+		conn = mysql_real_connect(mysql, host, user, dbpassword, db, port, NULL, 0);
+		//conn = mysql_real_connect(mysql, "localhost", "root", "", "bankhub", 0, NULL, 0);
 
 		std::string sql2 = "DELETE FROM accounts WHERE id =";
 		sql2 += _accNo;
